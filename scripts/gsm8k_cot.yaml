@@ -1,0 +1,6 @@
+# Step-by-step variant of sgl-eval's generic/math prompt. The default ("put the answer (and only answer)
+# inside \boxed{}") makes Qwen3.5-35B-A3B with thinking off answer without working (88% bare answers, 42.5%).
+user: |-
+  Solve the following math problem step by step. Put the final answer inside \boxed{{}}.
+
+  {problem}

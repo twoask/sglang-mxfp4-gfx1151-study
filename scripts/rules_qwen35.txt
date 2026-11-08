@@ -1,0 +1,8 @@
+# group  regex (first match wins) -- Qwen3.5-35B-A3B decode on gfx1151
+moe_matmul    _matmul_NNT_|^fused_moe_kernel
+moe_glue      topkGatingSoftmax|_ragged_tensor_metadata|radixSort|moe_align_block_size|count_and_sort_expert|_moe_sum_reduce|triton_per_fused_copy__mul_sum|_scatter_gather|compare_scalar|bitwise_not|arange_cuda|FillFunctor|BUnaryFunctor|rocprim
+gdn           fused_recurrent_gated_delta|_causal_conv1d|fused_qkvzba|l2norm|_layer_norm_fwd|_fused_sigmoid_mul_kernel
+full_attn     _fwd_grouped_kernel_stage1|_fwd_kernel_stage2|store_kvcache|_triton_mrope|_fused_qk_gemma_rmsnorm_gate|create_flashinfer_kv_indices|get_num_kv_splits
+dense_gemm    ^Cijk_
+norm_act      _gemma_fused_add_rmsnorm|_gemma_rmsnorm|act_and_mul|_fused_gate_sigmoid_mul_add
+other         elementwise_kernel|reduce_kernel|index|copy_kernel|CUDAFunctorOnSelf|bfloat16tofloat32

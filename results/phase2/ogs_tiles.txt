@@ -1,0 +1,50 @@
+Failed to import amdsmi with ModuleNotFoundError("No module named 'amdsmi'")
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.10.0+rocm7.13.0a20260513).
+
+gate_up batch 1: default 683.6 us (12.1 GB/s)
+     147.3 us   4.64x    56.3 GB/s  ok=True  {'block_n': 32, 'num_warps': 2, 'split_k': 1}
+     149.2 us   4.58x    55.6 GB/s  ok=True  {'block_n': 32, 'num_warps': 2}
+     157.7 us   4.33x    52.6 GB/s  ok=True  {'block_n': 32, 'num_warps': 4, 'split_k': 1}
+     176.4 us   3.88x    47.1 GB/s  ok=True  {'block_n': 64, 'num_warps': 4, 'split_k': 1}
+     177.2 us   3.86x    46.8 GB/s  ok=True  {'block_n': 64, 'num_warps': 4}
+     180.2 us   3.79x    46.1 GB/s  ok=True  {'block_n': 128, 'num_warps': 8, 'split_k': 1}
+
+gate_up batch 4: default 471.1 us (68.3 GB/s)
+     451.4 us   1.04x    71.3 GB/s  ok=True  {'block_n': 64, 'num_warps': 4}
+     452.8 us   1.04x    71.0 GB/s  ok=True  {'block_n': 64, 'num_warps': 8}
+     453.5 us   1.04x    70.9 GB/s  ok=True  {'block_n': 64}
+     453.8 us   1.04x    70.9 GB/s  ok=True  {'block_n': 64, 'num_warps': 8, 'split_k': 1}
+     454.2 us   1.04x    70.8 GB/s  ok=True  {'block_n': 128, 'split_k': 1}
+     455.1 us   1.04x    70.7 GB/s  ok=True  {'block_n': 128, 'num_warps': 8}
+
+gate_up batch 16: default 1799.7 us (61.7 GB/s)
+    1032.3 us   1.74x   107.5 GB/s  ok=True  {'block_n': 32, 'num_warps': 2}
+    1037.8 us   1.73x   107.0 GB/s  ok=True  {'block_n': 32, 'num_warps': 2, 'split_k': 1}
+    1038.0 us   1.73x   107.0 GB/s  ok=True  {'block_n': 64, 'num_warps': 4}
+    1038.1 us   1.73x   107.0 GB/s  ok=True  {'block_n': 64, 'num_warps': 4, 'split_k': 1}
+    1079.6 us   1.67x   102.8 GB/s  ok=True  {'block_n': 128, 'num_warps': 8}
+    1081.1 us   1.66x   102.7 GB/s  ok=True  {'block_n': 128, 'num_warps': 8, 'split_k': 1}
+
+down batch 1: default 248.2 us (16.7 GB/s)
+     147.6 us   1.68x    28.1 GB/s  ok=True  {'block_n': 32, 'num_warps': 2, 'split_k': 1}
+     147.7 us   1.68x    28.1 GB/s  ok=True  {'block_n': 64}
+     148.1 us   1.68x    28.0 GB/s  ok=True  {'block_n': 32, 'num_warps': 2}
+     148.4 us   1.67x    28.0 GB/s  ok=True  {'block_n': 32}
+     148.6 us   1.67x    27.9 GB/s  ok=True  {'block_n': 64, 'num_warps': 4}
+     148.7 us   1.67x    27.9 GB/s  ok=True  {'block_n': 32, 'num_warps': 4, 'split_k': 1}
+
+down batch 4: default 298.8 us (52.1 GB/s)
+     237.8 us   1.26x    65.4 GB/s  ok=True  {'block_n': 64, 'num_warps': 4}
+     244.0 us   1.22x    63.8 GB/s  ok=True  {'block_n': 64, 'num_warps': 4, 'split_k': 1}
+     244.7 us   1.22x    63.6 GB/s  ok=True  {'block_n': 128, 'split_k': 1}
+     245.0 us   1.22x    63.5 GB/s  ok=True  {'block_n': 128, 'num_warps': 8, 'split_k': 1}
+     247.8 us   1.21x    62.8 GB/s  ok=True  {'block_n': 128}
+     254.0 us   1.18x    61.3 GB/s  ok=True  {'block_n': 32, 'num_warps': 2, 'split_k': 1}
+
+down batch 16: default 595.1 us (81.1 GB/s)
+     448.0 us   1.33x   107.7 GB/s  ok=True  {'block_n': 128, 'num_warps': 8, 'split_k': 1}
+     448.0 us   1.33x   107.7 GB/s  ok=True  {'block_n': 128, 'num_warps': 8}
+     448.3 us   1.33x   107.6 GB/s  ok=True  {'block_n': 128}
+     448.6 us   1.33x   107.6 GB/s  ok=True  {'block_n': 128, 'split_k': 1}
+     448.8 us   1.33x   107.5 GB/s  ok=True  {'block_n': 64, 'num_warps': 4}
+     449.4 us   1.32x   107.4 GB/s  ok=True  {'block_n': 64, 'num_warps': 4, 'split_k': 1}

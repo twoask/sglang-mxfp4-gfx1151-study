@@ -1,0 +1,41 @@
+# bf16_c16: GPU kernel time per decode step (30 steps, graphs off), rules_qwen35.txt
+moe_matmul        197.568 ms/step   84.5%
+dense_gemm         24.956 ms/step   10.7%
+gdn                 8.043 ms/step    3.4%
+full_attn           1.905 ms/step    0.8%
+moe_glue            0.564 ms/step    0.2%
+norm_act            0.453 ms/step    0.2%
+other               0.337 ms/step    0.1%
+unmatched           0.003 ms/step    0.0%
+total GPU         233.830 ms/step
+
+# MoE matmul per call
+fused_moe_kernel                              n=2400 median  3068.7 us  grid/block ([8192, 1, 1], [128, 1, 1])
+
+# top kernels
+steps=0 total_kernel_ms=7014.9 distinct=44
+  5927.04 ms   2400x  84.5%  fused_moe_kernel
+   613.28 ms   2430x   8.7%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT32x16x128_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1
+   227.70 ms    900x   3.2%  fused_recurrent_gated_delta_rule_packed_decode_kernel
+    53.43 ms   1200x   0.8%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x48x64_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1_
+    53.19 ms    300x   0.8%  _fwd_grouped_kernel_stage1
+    47.33 ms   1200x   0.7%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x32x32_MI16x16x1_SN_LDSB1_AFC1_AG0_AFEM1_
+    22.19 ms   1200x   0.3%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT16x64x64_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1_
+    12.47 ms    900x   0.2%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT32x32x128_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1
+     7.40 ms    900x   0.1%  _causal_conv1d_update_kernel
+     5.48 ms   2400x   0.1%  _gemma_fused_add_rmsnorm_kernel
+     5.41 ms   2400x   0.1%  _ZN7sgl_hip10activation18act_and_mul_kernelI14__hip_bfloat16TnPFT_RKS3_EXadL_Z4siluIS2_ES3
+     5.38 ms   1200x   0.1%  void topkGatingSoftmax<__hip_bfloat16, 8, 256, 4, 16>(__hip_bfloat16 const*, bool const*, 
+     4.51 ms   1200x   0.1%  triton_per_fused_copy__mul_sum_0
+     4.27 ms   1200x   0.1%  void moe_align_block_size_kernel<int>(int const*, int*, int*, int*, int, int, unsigned lon
+     3.32 ms    900x   0.0%  _layer_norm_fwd_1pass_kernel
+     2.72 ms     90x   0.0%  void at::native::vectorized_elementwise_kernel<4, at::native::CUDAFunctorOnSelf_add<long>,
+     2.62 ms   1200x   0.0%  _fused_gate_sigmoid_mul_add_kernel
+     2.25 ms    900x   0.0%  fused_qkvzba_split_reshape_cat_contiguous_kernel
+     1.59 ms    300x   0.0%  _fwd_kernel_stage2
+     1.42 ms   1200x   0.0%  void count_and_sort_expert_tokens_kernel<int>(int const*, int*, int*, unsigned long, bool)
+     1.40 ms     30x   0.0%  void at::native::reduce_kernel<512, 1, at::native::ReduceOp<float, at::native::ArgMaxOps<f
+     1.35 ms    180x   0.0%  void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native:
+     1.26 ms     30x   0.0%  void at::native::vectorized_elementwise_kernel<4, at::native::(anonymous namespace)::launc
+     1.16 ms     30x   0.0%  void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kerne
+     0.80 ms    300x   0.0%  _triton_mrope_forward_fused

@@ -1,0 +1,8 @@
+mxfp4 eval: serve failed (see ~/Documents/mxfp4/runs/phase1/srv_eval_mxfp4.log)
+mxfp4 eval faults=0 smoke='391' * score                =  48.82%
+mxfp4 eval faults=0 smoke='391' * score                =  94.84%
+bf16 eval faults=0 smoke='391' * score                =  94.62%
+mxfp4 mxfp4 r1 faults=0 bs=1: 74.27 ms/step bs=4: 70.72 ms/step bs=16: 137.04 ms/step bs=32: 195.13 ms/step 
+bf16 bf16 r1 faults=0 bs=1: 59.7 ms/step bs=4: 113.31 ms/step bs=16: 234.47 ms/step 
+bf16 bf16 r2 faults=0 bs=1: 59.61 ms/step bs=4: 113.25 ms/step bs=16: 234.36 ms/step 
+mxfp4 mxfp4 r2 faults=0 bs=1: 74.13 ms/step bs=4: 71.07 ms/step bs=16: 136.68 ms/step bs=32: 194.61 ms/step 

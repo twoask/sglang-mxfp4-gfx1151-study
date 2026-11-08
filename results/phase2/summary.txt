@@ -1,0 +1,7 @@
+mxfp4 prof c1 faults=0 traces=1 (script hung on bare wait; killed 08:40)
+mxfp4 prof c16 faults=0 traces=1
+bf16 prof c1 faults=0 traces=1
+bf16 prof c16 faults=0 traces=1
+mxfp4 prof c1 faults=0 traces=1
+bf16 prof c1 faults=0 traces=1
+mxfp4 prof c4 faults=0 traces=1

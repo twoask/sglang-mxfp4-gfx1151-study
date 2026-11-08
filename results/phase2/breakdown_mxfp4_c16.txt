@@ -1,0 +1,42 @@
+# mxfp4_c16: GPU kernel time per decode step (30 steps, graphs off), rules_qwen35.txt
+moe_matmul         92.008 ms/step   71.2%
+dense_gemm         24.757 ms/step   19.1%
+gdn                 7.882 ms/step    6.1%
+full_attn           1.885 ms/step    1.5%
+moe_glue            1.170 ms/step    0.9%
+other               1.144 ms/step    0.9%
+norm_act            0.463 ms/step    0.4%
+unmatched           0.005 ms/step    0.0%
+total GPU         129.314 ms/step
+
+# MoE matmul per call
+_matmul_NNT_bf16xbf16xmxfp4_32x256x128x1      n=1200 median  1780.6 us  grid/block ([512, 1, 1], [256, 1, 1])
+_matmul_NNT_fp32xbf16xmxfp4_32x256x128x1      n=1200 median   526.2 us  grid/block ([1024, 1, 1], [256, 1, 1])
+
+# top kernels
+steps=0 total_kernel_ms=3879.4 distinct=50
+  2127.01 ms   1200x  54.8%  _matmul_NNT_bf16xbf16xmxfp4_32x256x128x1
+   633.25 ms   1200x  16.3%  _matmul_NNT_fp32xbf16xmxfp4_32x256x128x1
+   605.59 ms   2430x  15.6%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT32x16x128_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1
+   222.56 ms    900x   5.7%  fused_recurrent_gated_delta_rule_packed_decode_kernel
+    54.62 ms   1200x   1.4%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x48x64_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1_
+    52.40 ms    300x   1.4%  _fwd_grouped_kernel_stage1
+    47.29 ms   1200x   1.2%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT64x32x32_MI16x16x1_SN_LDSB1_AFC1_AG0_AFEM1_
+    22.51 ms   1200x   0.6%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT16x64x64_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1_
+    12.71 ms    900x   0.3%  Cijk_Alik_Bljk_BBS_BH_Bias_HA_S_SAV_UserArgs_MT32x32x128_MI16x16x1_SN_LDSB0_AFC1_AG0_AFEM1
+    10.92 ms   3660x   0.3%  void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::
+     8.93 ms   1200x   0.2%  void at::native::radixSortKVInPlace<-2, -1, 32, 4, long, long, unsigned int>(at::cuda::det
+     7.97 ms   1200x   0.2%  void at::native::reduce_kernel<128, 4, at::native::ReduceOp<float, at::native::func_wrappe
+     7.59 ms    900x   0.2%  _causal_conv1d_update_kernel
+     6.98 ms   2460x   0.2%  void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_noca
+     5.54 ms   2400x   0.1%  _ZN7sgl_hip10activation18act_and_mul_kernelI14__hip_bfloat16TnPFT_RKS3_EXadL_Z4siluIS2_ES3
+     5.45 ms   2400x   0.1%  _gemma_fused_add_rmsnorm_kernel
+     5.34 ms   1200x   0.1%  void topkGatingSoftmax<__hip_bfloat16, 8, 256, 4, 16>(__hip_bfloat16 const*, bool const*, 
+     3.89 ms   1230x   0.1%  void at::native::vectorized_elementwise_kernel<4, at::native::compare_scalar_kernel<long>(
+     3.44 ms    900x   0.1%  _layer_norm_fwd_1pass_kernel
+     3.26 ms   1380x   0.1%  void at::native::index_elementwise_kernel<128, 4, at::native::gpu_index_kernel<at::native:
+     3.06 ms   1200x   0.1%  _ragged_tensor_metadata_compute
+     2.82 ms   1200x   0.1%  _fused_gate_sigmoid_mul_add_kernel
+     2.80 ms   2460x   0.1%  void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array
+     2.28 ms   1200x   0.1%  _ragged_tensor_metadata_memset
+     2.25 ms    900x   0.1%  fused_qkvzba_split_reshape_cat_contiguous_kernel

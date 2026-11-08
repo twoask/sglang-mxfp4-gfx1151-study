@@ -1,0 +1,7 @@
+mxfp4 base r1 faults=0 bs=1: 74.24 ms/step bs=4: 71.04 ms/step bs=16: 137.04 ms/step bs=32: 194.97 ms/step 
+mxfp4 tile64w4 r1 faults=0 bs=1: 37.91 ms/step bs=4: 57.51 ms/step bs=16: 100.41 ms/step bs=32: 139.57 ms/step 
+mxfp4 base r2 faults=0 bs=1: 74.18 ms/step bs=4: 71.07 ms/step bs=16: 137.07 ms/step bs=32: 195.29 ms/step 
+mxfp4 tile64w4 r2 faults=0 bs=1: 37.8 ms/step bs=4: 57.27 ms/step bs=16: 100.24 ms/step bs=32: 139.28 ms/step 
+mxfp4_tile64w4 eval faults=0 smoke='391' * score                =  95.22%
+mxfp4 bm16bn64w4 r1 faults=0 bs=1: 37.5 ms/step bs=4: 58.07 ms/step bs=16: 99.47 ms/step bs=32: 139.65 ms/step 
+mxfp4 bm16bn64w4 r2 faults=0 bs=1: 37.02 ms/step bs=4: 55.02 ms/step bs=16: 96.53 ms/step bs=32: 136.87 ms/step 
