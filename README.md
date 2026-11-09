@@ -1,6 +1,6 @@
 # Qwen3.5-35B-A3B MXFP4 decode on gfx1151 (Strix Halo)
 
-Why the Quark MXFP4 W4A16 MoE path from [sglang#41389](https://github.com/sgl-project/sglang/pull/41389) is slower than bf16 at batch 1 on gfx1151, and a tile-setting change that fixes it.
+Why the Quark MXFP4 W4A16 MoE path from [sglang#41389](https://github.com/sgl-project/sglang/pull/41389) is slower than bf16 at batch 1 on gfx1151, and a tile setting that closes the gap in testing. This repo holds the measurements only; no fix is proposed here as code.
 
 ## Summary
 
@@ -111,9 +111,9 @@ The real swizzled weights and `triton_kernels.matmul` at this model's shapes (25
 
 Output tok/s at 16 concurrent: 96.6 / 96.1 -> 123.3 / 124.3. GSM8K with the change: 95.22% (base 94.84%). No HIP errors or memory faults in any log.
 
-## The change
+## Possible fixes
 
-`patches/0001-study-env-driven-opt-flag-constraints.patch` is the study-only switch used for the A/B: it reads constraints from the `MXFP4_STUDY_OGS` environment variable in `_swizzle_mxfp4`, so one checkout serves both arms. It is not meant for upstream. A real fix would be either:
+`patches/0001-study-env-driven-opt-flag-constraints.patch` is only the test switch used for the A/B: it reads constraints from the `MXFP4_STUDY_OGS` environment variable in `_swizzle_mxfp4`, so one checkout serves both arms. It is not a fix and not meant for upstream. A fix in sglang could be either:
 
 1. a small RDNA-gated `opt_flags.update_opt_flags_constraints({"block_n": 64, "num_warps": 4})` in `_swizzle_mxfp4`, next to the existing NVIDIA branches, or
 2. moving sglang's ROCm triton-kernels pin to a build that includes #10810 (then re-checking, since #10810's values were slower here with the constraints API).
@@ -140,4 +140,4 @@ bash scripts/profile_session.sh mxfp4 $M 1
 python scripts/group_kernels.py runs/phase2/prof_mxfp4_c1/*.trace.json.gz scripts/rules_qwen35.txt 30
 ```
 
-Raw profiler traces (85-125 MB each at batch 16) are not in the repo; ask if you want them.
+The raw profiler traces (85-125 MB each at batch 16) are too big for the repo, but I'm happy to share them if they'd help.
