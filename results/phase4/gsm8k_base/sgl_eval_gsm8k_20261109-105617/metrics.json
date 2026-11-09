@@ -1,0 +1,54 @@
+{
+  "aggregate": {
+    "error_rate": 0.0,
+    "score": 0.954510993176649,
+    "stop_rate": 0.9840788476118272,
+    "truncated_rate": 0.01592115238817286
+  },
+  "base_url": "http://127.0.0.1:30000/v1",
+  "gen": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "extra_body": null,
+    "max_tokens": 1024,
+    "min_p": 0.0,
+    "reasoning_effort": null,
+    "repetition_penalty": 1.0,
+    "seed": null,
+    "system_message": null,
+    "temperature": 0.0,
+    "top_p": 0.95
+  },
+  "latency_seconds": 2727.592184738023,
+  "model": "amd/Qwen3.5-35B-A3B-MXFP4",
+  "n_repeats": 1,
+  "name": "gsm8k",
+  "ns_commit_sha": "645cf567ff08c0ae9cc3fc8e1edbb975b3067816",
+  "num_examples": 1319,
+  "num_threads": 64,
+  "output_throughput_tps": 191.11398064445893,
+  "prompt": {
+    "path": "~/code/sglang-mxfp4-gfx1151-study/scripts/gsm8k_cot.yaml",
+    "spec": "~/code/sglang-mxfp4-gfx1151-study/scripts/gsm8k_cot.yaml",
+    "yaml": "# Step-by-step variant of sgl-eval's generic/math prompt. The default (\"put the answer (and only answer)\n# inside \\boxed{}\") makes Qwen3.5-35B-A3B with thinking off answer without working (88% bare answers, 42.5%).\nuser: |-\n  Solve the following math problem step by step. Put the final answer inside \\boxed{{}}.\n\n  {problem}\n"
+  },
+  "sgl_eval_version": "0.1.3",
+  "timestamp": "20261109-105617",
+  "token_usage": {
+    "completion_tokens": {
+      "count": 1319,
+      "mean": 395.20924943138743
+    },
+    "prompt_tokens": {
+      "count": 1319,
+      "mean": 92.22213798332069
+    },
+    "reasoning_tokens": {
+      "count": 1319,
+      "mean": 0.0
+    }
+  },
+  "total_completion_tokens": 521281,
+  "total_prompt_tokens": 121641
+}

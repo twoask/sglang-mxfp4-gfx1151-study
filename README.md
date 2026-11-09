@@ -111,6 +111,20 @@ The real swizzled weights and `triton_kernels.matmul` at this model's shapes (25
 
 Output tok/s at 16 concurrent: 96.6 / 96.1 -> 123.3 / 124.3. GSM8K with the change: 95.22% (base 94.84%). No HIP errors or memory faults in any log.
 
+### 5. The PR version (`results/phase4/`)
+
+This is the change as proposed upstream: the tile constraint scoped to the Quark W4A16 matmuls, on gfx1151 only. It was compared against main @ `4373137b6f` with the radix cache off, so prefill is fully computed (`scripts/run_phase4.sh`).
+
+| | main r1 / r2 | PR r1 / r2 |
+|---|---|---|
+| decode batch 1 (ms/step) | 74.35 / 74.27 | 37.84 / 37.89 |
+| decode batch 16 | 135.25 / 135.30 | 99.74 / 99.87 |
+| 2k prefill, input tok/s | 1745 / 1746 | 1788 / 1776 |
+| 8k prefill, input tok/s | 1695 / 1694 | 1696 / 1693 |
+| GSM8K (sgl-eval 0.1.3, 1319) | 95.45% | 95.30% |
+
+At prefill sizes the kernel sweep (`ogs_large_m.txt`, `scripts/bench_ogs_large_m.py`) has gate/up at 1.01-1.70x and down at 0.88-1.39x, and 1.01-1.61x per layer.
+
 ## Possible fixes
 
 `patches/0001-study-env-driven-opt-flag-constraints.patch` is only the test switch used for the A/B: it reads constraints from the `MXFP4_STUDY_OGS` environment variable in `_swizzle_mxfp4`, so one checkout serves both arms. It is not a fix and not meant for upstream. A fix in sglang could be either:

@@ -1,0 +1,6 @@
+mxfp4 base r1 faults=0 bs=1: 74.35 ms/step bs=4: 70.52 ms/step bs=16: 135.25 ms/step bs=32: 192.93 ms/step  2k_c1 ttft_med=1169.15 8k_c1 ttft_med=4759.65 2k_c16 ttft_med=12426.19 
+mxfp4 pr r1 faults=0 bs=1: 37.84 ms/step bs=4: 57.81 ms/step bs=16: 99.74 ms/step bs=32: 138.66 ms/step  2k_c1 ttft_med=1141.58 8k_c1 ttft_med=4768.44 2k_c16 ttft_med=12403.52 
+mxfp4 base r2 faults=0 bs=1: 74.27 ms/step bs=4: 71.04 ms/step bs=16: 135.3 ms/step bs=32: 193.02 ms/step  2k_c1 ttft_med=1166.05 8k_c1 ttft_med=4768.80 2k_c16 ttft_med=12422.25 
+mxfp4 pr r2 faults=0 bs=1: 37.89 ms/step bs=4: 57.58 ms/step bs=16: 99.87 ms/step bs=32: 138.74 ms/step  2k_c1 ttft_med=1139.48 8k_c1 ttft_med=4779.10 2k_c16 ttft_med=12412.23 
+base eval faults=0 smoke='391' * score                =  95.45%
+pr eval faults=0 smoke='391' * score                =  95.30%

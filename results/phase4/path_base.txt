@@ -1,0 +1,1 @@
+[2026-11-09 10:55:56] Quark MXFP4 MoE on gfx1151: no FP4 hardware, running the W4A4 MXFP4 checkpoint as W4A16 (bf16 activations, MXFP4 weights upcast in triton_kernels).
