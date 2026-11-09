@@ -1,0 +1,24 @@
+{} 1024 2048 8: max abs err 1.995, ref max 865.6, tol 17.31
+PASS
+{} 1024 2048 32: max abs err 3.221, ref max 1099, tol 21.98
+PASS
+{} 1024 2048 128: max abs err 3.916, ref max 1060, tol 21.2
+PASS
+{} 2048 512 8: max abs err 1.508, ref max 551.9, tol 11.04
+PASS
+{} 2048 512 32: max abs err 1.968, ref max 564.7, tol 11.29
+PASS
+{} 2048 512 128: max abs err 1.968, ref max 620.8, tol 12.42
+PASS
+{'block_n': 64, 'num_warps': 4} 1024 2048 8: max abs err 1.995, ref max 865.6, tol 17.31
+PASS
+{'block_n': 64, 'num_warps': 4} 1024 2048 32: max abs err 3.221, ref max 1099, tol 21.98
+PASS
+{'block_n': 64, 'num_warps': 4} 1024 2048 128: max abs err 3.916, ref max 1060, tol 21.2
+PASS
+{'block_n': 64, 'num_warps': 4} 2048 512 8: max abs err 1.508, ref max 551.9, tol 11.04
+PASS
+{'block_n': 64, 'num_warps': 4} 2048 512 32: max abs err 1.968, ref max 564.7, tol 11.29
+PASS
+{'block_n': 64, 'num_warps': 4} 2048 512 128: max abs err 1.968, ref max 620.8, tol 12.42
+PASS

@@ -85,7 +85,7 @@ Batch 4 moves ~4x the bytes in less time than batch 1 because it crosses `m > 16
 
 ### 3. Tile sweep (`results/phase2/ogs_tiles.txt`, `scripts/bench_ogs_tiles.py`)
 
-The real swizzled weights and `triton_kernels.matmul` at this model's shapes (256 experts, top-8; gate/up N=1024 K=2048, down N=2048 K=512), sweeping `block_n`, `num_warps` and `split_k` through `scoped_opt_flags_constraints`. Every config's output is compared with the default config's (all match). Separately, the default, `block_n 32` and `block_n 128` were checked against a hand-dequantized fp32 reference at batch 1 and 4: max relative error 0.24%, identical across configs (`scripts/check_triton_kernels.py` does the same check on its own).
+The real swizzled weights and `triton_kernels.matmul` at this model's shapes (256 experts, top-8; gate/up N=1024 K=2048, down N=2048 K=512), sweeping `block_n`, `num_warps` and `split_k` through `scoped_opt_flags_constraints`. Every config's output is compared with the default config's (all match). Separately, the default, `block_n 32` and `block_n 128` were checked against a hand-dequantized fp32 reference at batch 1 and 4: max relative error 0.24%, identical across configs (`scripts/check_triton_kernels.py` does the same check on its own). `block_n 64, 4 warps` was also checked directly against the fp32 reference at both shapes and 8 / 32 / 128 rows: all pass, with the same error as the default config (`results/phase2/check_bn64w4_reference.txt`); at batch 1 its output is bitwise identical to the default's.
 
 | shape | default | block_n 64, 4 warps |
 |---|---|---|
